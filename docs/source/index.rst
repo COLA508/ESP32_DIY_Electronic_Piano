@@ -1,5 +1,5 @@
-ESP32 IOT Learning Kit
-=======================
+ESP32 DIY Electronic Piano
+=========================
 
 .. toctree::
    :maxdepth: 2
@@ -7,7 +7,7 @@ ESP32 IOT Learning Kit
 
    Introduction
    QuickStartGuide
-   
+
 
 
 .. toctree::

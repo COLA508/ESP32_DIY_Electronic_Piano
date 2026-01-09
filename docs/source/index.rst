@@ -6,7 +6,8 @@ ESP32 IOT Learning Kit
    :caption: 📘 Basic content
 
    Introduction
-   Arduino_Tutorial
+   QuickStartGuide
+   
 
 
 .. toctree::

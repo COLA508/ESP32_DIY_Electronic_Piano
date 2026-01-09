@@ -1,10 +1,10 @@
-**Thank you for choosing the Lafvin ESP32 IoT Learning Kit.**
+**Dear maker friends, welcome to the learning world of the ESP32 DIY Electronic Piano!**
 
 **Please read this documentation carefully. If you encounter any problems during use, please contact our after-sales support team, and we will assist you as soon as possible.**
 
 ----
 
-**ESP32 IOT Learning Kit**
+**ESP32 DIY Electronic Piano**
 
 .. image:: _static/1-1/2.introduct.png
    :width: 800
@@ -15,35 +15,22 @@
 Introduction
 ============
 
-*This kit uses the ESP32 as its core controller and integrates a variety of common sensors and actuator modules, resulting in a rich system with wide applicability. Its key features and advantages are as follows:*
+*This is a smart electronic keyboard learning kit based on the ESP32 microcontroller, integrating programming learning, music education, and electronic engineering. Through vivid light effects and realistic scales, learners can grasp modern technological principles while creating music.*
 
-1. Multifunctional Integration
-Supports Wi-Fi communication and web control for remote monitoring and interaction.
-Provides sensor detection, servo control, LCD display, and environmental monitoring functions, covering the core modules of IoT applications.
-Suitable for a variety of experimental scenarios, from basic learning to comprehensive applications.
+1. Dual-Mode Playing System
+Manual Playing Mode: 7 touch buttons correspond to the complete scale（Do-Si）, supporting real-time playing.
+Automatic Playing Mode: 3 built-in classic songs play automatically:
+"Twinkle Twinkle Little Star"、"Jingle Bells"、"Happy Birthday".
 
-2. Suitable Audience and Scenarios
-Suitable for beginners of electronics and IoT for learning and practice.
-Can be used for maker education in primary and secondary schools, Arduino programming teaching, and laboratory project research.
-It is also suitable for smart home prototype development, helping users quickly master the core principles of intelligent control and IoT applications.
+2. Intelligent Visual Feedback System
+8 Programmable RGB LED Beads
+Manual Mode: Dynamic lighting effects triggered by a button, with a high-brightness center and gradient on both sides
+Automatic Mode: Three exclusive light shows
 
-3. Hardware Design Advantages
-Using the ESP32 development board and dedicated expansion board design, the modules are standardized and the interfaces are unified.
-All modules use the XH2.54 interface with reverse polarity protection to ensure secure connections.
-Module interconnection can be completed without a breadboard, simplifying wiring, improving experimental efficiency, and enhancing ease of use.
-
-4. Abundant Course Resources
-Provides comprehensive course resources covering over ten common sensors and actuator modules.
-The course content progresses step-by-step, from basic introductory techniques to comprehensive applications.
-Each experiment features a web control interface, making it both engaging and practical.
-
-5. Skill Acquisition and Application
-Master ESP32 programming using the Arduino IDE.
-Proficient in reading digital and analog sensor data.
-Understand Wi-Fi connectivity and web server design, and master methods for environmental data collection and multi-module linkage control.
-Develop a deep understanding of the working principles of RFID sensing and identification.
-Be able to implement real-time IoT web monitoring and remote interaction, demonstrating practical IoT system development capabilities.
-
+3. Precision Audio System
+PWM audio output for accurate pitch.
+Manual mode supports beat quantization（120 BPM）.
+Automatic mode includes original track rhythm reproduction.
 ----
 
 Bill of Materials

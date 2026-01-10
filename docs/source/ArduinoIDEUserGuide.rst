@@ -224,6 +224,7 @@ C. Click the **upload** button to upload the code to the development board.
    :align: center
 
 ----
+
 D. After clicking upload, the upload progress will be displayed in the output window.
 
 .. image:: _static/arduino/17.code.png

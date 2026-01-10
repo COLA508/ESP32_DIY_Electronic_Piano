@@ -179,3 +179,7 @@ The operation logic of the web control interface is exactly the same as that of 
    :align: center
 
 ----
+
+**Everything is ready, so play your own music!**
+
+----

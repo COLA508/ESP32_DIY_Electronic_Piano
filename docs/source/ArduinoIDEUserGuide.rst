@@ -6,10 +6,46 @@ Arduino IDE is a simple and easy-to-use open-source development environment that
 1. Install Arduino IDE
 ----------------------
 
-A: Click here to visit the `Arduino IDE <https://www.arduino.cc/en/software/>`_ website and download the installation package suitable for your computer version. This example will demonstrate using Windows.
+A. Click here to visit the `Arduino IDE <https://www.arduino.cc/en/software/>`_ website and download the installation package suitable for your computer version. This example will demonstrate using Windows.
 
 .. image:: _static/arduino/1.install.png
    :width: 1000
    :align: center
 
 ----
+B. Run the installer by double-clicking the downloaded ``arduino-ide_xxxx.exe`` file.  
+
+C. Read and accept the **License Agreement**.  
+
+.. image:: _static/arduino/2.install.png
+   :width: 800
+   :align: center
+
+----
+
+D. Select the desired installation options.
+
+.. image:: _static/arduino/3.install.png
+   :width: 800
+   :align: center
+
+----
+
+E. Choose the installation path. It is recommended to install the software on a non-system drive.
+
+.. image:: _static/arduino/4.install.png
+   :width: 800
+   :align: center
+
+----
+
+F. Click Install and wait for the process to complete. Finally, click Finish.
+
+.. image:: _static/arduino/5.install.png
+   :width: 800
+   :align: center
+
+----
+
+2. Add Support For ESP32 Development Board
+------------------------------------------

@@ -6,10 +6,10 @@ Arduino IDE is a simple and easy-to-use open-source development environment that
 1. Install Arduino IDE
 ----------------------
 
-A: Click here to visit the `Arduino IDE <https://www.arduino.cc/en/software/>`_website and download the installation package suitable for your computer version. This example will demonstrate using Windows.
+A: Click here to visit the `Arduino IDE <https://www.arduino.cc/en/software/>`_ website and download the installation package suitable for your computer version. This example will demonstrate using Windows.
 
 .. image:: _static/arduino/1.install.png
-   :width: 800
+   :width: 1000
    :align: center
 
 ----

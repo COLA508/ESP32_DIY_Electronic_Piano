@@ -1,7 +1,7 @@
 Quick Start Guide
 =================
 
-1. Electronic Paino Assembly
+1. Electronic Piano Assembly
 ----------------------------
 
 **Please watch the following video to assemble the electronic paino.**
@@ -83,7 +83,7 @@ Unzip "Flash Download Tool". The folder contains the following files. Double-cli
 
 .. note::
 
-   - The firmware can be downloaded from the resources we provide; the file name is: Paino.bin
+   - The firmware can be downloaded from the resources we provide; the file name is: Piano.bin
 
 ----
 

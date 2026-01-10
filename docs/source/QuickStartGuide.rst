@@ -52,8 +52,8 @@ Unzip "Flash Download Tool". The folder contains the following files. Double-cli
 
 ----
 
-4. Burn The Program To The ESP32 Development Board
----------------------------------------------------
+4. Burn The Program To ESP32 
+----------------------------
 
 4.1 Please double-click to run the "flash_download_tool" program. After starting, you will see the software interface as shown in the image below. In the "Chip Type" selection box on the interface, please find and select "ESP32".
 
@@ -156,7 +156,7 @@ Auto Playback Mode: Displays different lighting effects depending on the current
 C:WiFi Web Control
 ~~~~~~~~~~~~~~~~~~
 
-Turn on your phone's Wi-Fi, find the hotspot named ESP32_Piano and connect to it. The password is 12345678.
+Turn on your phone's Wi-Fi, find the hotspot named **ESP32_Piano** and connect to it. The password is **12345678**.
 
 .. image:: _static/install/11.WEB.png
    :width: 800
@@ -164,7 +164,7 @@ Turn on your phone's Wi-Fi, find the hotspot named ESP32_Piano and connect to it
 
 ----
 
-After a successful connection, open any browser and enter 192.168.4.1 in the address bar to access the web control interface.
+After a successful connection, open any browser and enter **192.168.4.1** in the address bar to access the web control interface.
 
 .. image:: _static/install/12.WEB.png
    :width: 800

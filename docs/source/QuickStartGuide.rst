@@ -55,6 +55,65 @@ Unzip "Flash Download Tool". The folder contains the following files. Double-cli
 4. Burn The Program To The ESP32 Development Board
 ---------------------------------------------------
 
+4.1 Please double-click to run the "flash_download_tool" program. After starting, you will see the software interface as shown in the image below. In the "Chip Type" selection box on the interface, please find and select "ESP32".
 
+.. image:: _static/install/5.TOOL.png
+   :width: 800
+   :align: center
 
+----
 
+4.2 Please carefully check that all parameters are configured correctly according to the image before clicking "OK" to confirm. The system will then redirect to the programming interface.
+
+.. image:: _static/install/6.TOOL.png
+   :width: 800
+   :align: center
+
+----
+
+4.3 Import the firmware following the steps shown in the image.
+
+.. image:: _static/install/7.TOOL.png
+   :width: 800
+   :align: center
+
+.. note::
+
+   - The firmware can be downloaded from the resources we provide; the file name is: Paino.bin
+
+----
+
+4.4 Set the parameters as shown in the picture: SPI SPEED select 80MHz, SPI MODE select DIO, COM select the serial port actually connected to the computer, and BAUD set to 921600.
+
+.. image:: _static/install/8.TOOL.png
+   :width: 800
+   :align: center
+
+----
+
+4.5 After completing the above settings, click the START button and the system will automatically start burning the firmware. Please wait patiently for the burning to complete.
+
+.. image:: _static/install/9.TOOL.png
+   :width: 800
+   :align: center
+
+----
+
+4.6 After the burning is completed, the interface will display the FINISH prompt. At this time, press the RST reset button on the ESP32 development board and the system will start running.
+
+.. image:: _static/install/10.TOOL.png
+   :width: 800
+   :align: center
+
+----
+
+.. note::
+
+   If the flashing process fails, please follow these steps:
+
+   - Confirm that the ESP32 development board is properly connected to the computer via a USB cable and that the CH340 driver is installed.
+   - Check that COMx in the flashing tool is the actual serial port number.
+   - Confirm that the firmware file is correctly placed in the BIN folder and check the box on the left.
+   - Verify the flashing parameter settings: SPI SPEED = 80MHz, SPI MODE = DIO, BAUD = 921600.
+   - Try changing the USB cable or USB port to eliminate communication issues.
+   - If flashing still fails, restart the computer and development board and try again.

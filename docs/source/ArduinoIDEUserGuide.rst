@@ -47,8 +47,8 @@ F. Click Install and wait for the process to complete. Finally, click Finish.
 
 ----
 
-2. Add Support For ESP32 Development Board
-------------------------------------------
+2. Add ESP32 Board Manager
+--------------------------
 
 A. Open the Arduino IDE, click **File** → **Preferences** in the upper left corner, and copy and paste the following address into the Additional Board Manager URLs input box.
 

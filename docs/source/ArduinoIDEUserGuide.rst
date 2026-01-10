@@ -49,3 +49,29 @@ F. Click Install and wait for the process to complete. Finally, click Finish.
 
 2. Add Support For ESP32 Development Board
 ------------------------------------------
+
+A. Open the Arduino IDE, click **File** → **Preferences** in the upper left corner, and copy and paste the following address into the Additional Board Manager URLs input box.
+
+.. image:: _static/arduino/6.esp.png
+   :width: 800
+   :align: center
+----
+
+B. After entering the URL, click OK. **https://espressif.github.io/arduino-esp32/package_esp32_index.json**
+
+.. image:: _static/arduino/7.esp.png
+   :width: 800
+   :align: center
+
+.. raw:: html
+
+   <div style="margin-top: 30px;"></div>
+
+.. image:: _static/arduino/8.esp.png
+   :width: 800
+   :align: center
+----
+
+C. After completing this step, close and reopen the Arduino IDE.
+
+----

@@ -145,3 +145,101 @@ You can also download required libraries directly using the Arduino IDE.
    :align: center
 
 ----
+
+4. Install Serial Port Tool
+---------------------------
+
+ - After connecting the ESP32 to the computer, a USB-to-serial driver needs to be installed to establish communication. For detailed installation steps, please click here. :ref:`Install Serial Port Tool`
+
+ - If you have already successfully installed the driver, you can skip this step.
+----
+
+5. Upload Test Code
+-------------------
+
+ - To verify that the Arduino IDE is configured correctly and the ESP32 development board is working properly, please use the following code to test the onboard LED connected to GPIO pin 2.
+
+.. code-block:: cpp
+
+ const int ledPin = 2; // PIN for on-board LED
+
+ // PWM Configuration
+ const int freq = 5000;      // PWM frequency (Hz)
+ const int ledChannel = 0;   // Use PWM channel 0 (0-15)
+ const int resolution = 8;   // 8-bit resolution (0-255)
+
+ void setup() {
+  // Configure PWM channel parameters
+  ledcSetup(ledChannel, freq, resolution);
+  
+  // Attach PWM channel to LED pin
+  ledcAttachPin(ledPin, ledChannel);
+  
+  // Initialize serial communication for debugging
+  Serial.begin(115200);
+  Serial.println("ESP32 Breathing LED Program Started!");
+ }
+
+ void loop() {
+  // Breathing effect: brightness gradually increases (fade in)
+  for (int dutyCycle = 0; dutyCycle <= 255; dutyCycle++) {
+    ledcWrite(ledChannel, dutyCycle); // Set PWM duty cycle
+    delay(5); // Controls speed (larger value = slower breathing)
+  }
+  
+  // Breathing effect: brightness gradually decreases (fade out)
+  for (int dutyCycle = 255; dutyCycle >= 0; dutyCycle--) {
+    ledcWrite(ledChannel, dutyCycle); // Set PWM duty cycle
+    delay(5); // Controls speed (larger value = slower breathing)
+  }
+  
+  // Optional pause between each breathing cycle
+  delay(100);
+}
+
+----
+
+A. Copy the code above into the Arduino IDE.
+
+B. As shown in the image below, search for and select the corresponding development board and serial port.
+
+.. image:: _static/arduino/14.code.png
+   :width: 800
+   :align: center
+
+.. raw:: html
+
+   <div style="margin-top: 30px;"></div>
+
+.. image:: _static/arduino/15.code.png
+   :width: 800
+   :align: center
+
+----
+
+C. Click the **upload** button to upload the code to the development board.
+
+.. image:: _static/arduino/16.code.png
+   :width: 800
+   :align: center
+
+----
+D. After clicking upload, the upload progress will be displayed in the output window.
+
+.. image:: _static/arduino/17.code.png
+   :width: 800
+   :align: center
+
+E. Once the output display shows that the upload is complete, press the RST button on the ESP32 development board to start the program.
+
+F. After pressing the RST key, you can see the onboard LEDs of the ESP32 development board flashing, proving that the Arduino IDE configuration and the development board are working properly.
+
+.. image:: _static/arduino/18.code.png
+   :width: 800
+   :align: center
+
+----
+
+**Congratulations! Your Arduino IDE is ready! Now you can start writing your first program!**
+
+----

@@ -10,7 +10,9 @@ Quick Start Guide
 
 ----
 
-2. Install serial port tool
+.. _Install Serial Port Tool:
+
+2. Install Serial Port Tool
 ---------------------------
 
 This kit uses an ESP32 development board with a CH340 serial port chip. The corresponding driver needs to be installed before connecting it to the computer for the first time. If you have already installed the CH340 driver, you can skip this step and proceed directly to the next section.

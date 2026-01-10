@@ -76,7 +76,7 @@ C. After completing this step, close and reopen the Arduino IDE.
 
 ----
 
-2. Add Libraries
+3. Add Libraries
 ----------------
 
 Arduino libraries can significantly simplify the development process.
@@ -132,14 +132,13 @@ E. If the library file is imported successfully, the Arduino IDE output window w
 
 ----
 
-Download Libraries Using Arduino IDE
-------------------------------------
+F. Download Libraries Using Arduino IDE
 
 You can also download required libraries directly using the Arduino IDE.
 
-A. On the right side of the Arduino IDE interface, click the Library Manager icon.
+ - On the right side of the Arduino IDE interface, click the Library Manager icon.
 
-B. Enter keywords in the search box to find the required library and click Install to download.
+ - Enter keywords in the search box to find the required library and click Install to download.
 
 .. image:: _static/arduino/13.lib.png
    :width: 800

@@ -38,7 +38,7 @@ After installation, please connect the ESP32 development board to your computer 
 ----
 
 3. Install Flash Download Tool
---------------------------
+------------------------------
 
 Please locate and open the "Flash Download Tool" installation package from the resource files we provided, and then follow the image instructions below to complete the installation.
 
@@ -121,3 +121,61 @@ Unzip "Flash Download Tool". The folder contains the following files. Double-cli
    - Verify the flashing parameter settings: SPI SPEED = 80MHz, SPI MODE = DIO, BAUD = 921600.
    - Try changing the USB cable or USB port to eliminate communication issues.
    - If flashing still fails, restart the computer and development board and try again.
+
+----
+
+5. Electronic Piano User Guide
+------------------------------
+
+A:Physical Button Control
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Buttons 1-7: Correspond to the 7 notes（Do, Re, Mi, Fa, Sol, La, Si）
+
+Auto Play Button: When pressed, plays 3 preset songs in a loop. 
+
+First press: Plays "Twinkle Twinkle Little Star"
+
+Second press: Plays "Jingle Bells"
+
+Third press: Plays "Happy Birthday"
+
+Fourth press: Returns to the first song, and so on.
+
+----
+
+B:RGB Lighting Effects
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Manual Mode: When a button is pressed, the corresponding LED lights up, while adjacent LEDs remain at low brightness.
+
+Auto Playback Mode: Displays different lighting effects depending on the currently playing song.
+
+----
+
+C:WiFi Web Control
+~~~~~~~~~~~~~~~~~~
+
+Turn on your phone's Wi-Fi, find the hotspot named ESP32_Piano and connect to it. The password is 12345678.
+
+.. image:: _static/install/11.WEB.png
+   :width: 800
+   :align: center
+
+----
+
+After a successful connection, open any browser and enter 192.168.4.1 in the address bar to access the web control interface.
+
+.. image:: _static/install/12.WEB.png
+   :width: 800
+   :align: center
+
+----
+
+The operation logic of the web control interface is exactly the same as that of the physical buttons. It is recommended to rotate your phone to landscape mode for the best display and operating experience.
+
+.. image:: _static/install/13.WEB.png
+   :width: 800
+   :align: center
+
+----

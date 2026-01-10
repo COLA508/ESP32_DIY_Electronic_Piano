@@ -77,6 +77,10 @@ Unzip "Flash Download Tool". The folder contains the following files. Double-cli
    :width: 800
    :align: center
 
+.. raw:: html
+
+   <div style="margin-top: 30px;"></div>
+
 .. note::
 
    - The firmware can be downloaded from the resources we provide; the file name is: Paino.bin

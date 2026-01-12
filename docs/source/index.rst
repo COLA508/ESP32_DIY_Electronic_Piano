@@ -15,4 +15,4 @@ ESP32 DIY Electronic Piano
    :caption: 🧩 Experimental Course
 
    ArduinoIDEUserGuide
-   
+   Components

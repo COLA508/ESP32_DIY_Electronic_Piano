@@ -67,7 +67,7 @@ Bill of Materials
      - Basswood Board
      - x7
    * - 7
-     - DuPont Line
+     - Jumper Wires
      - Several
 
 

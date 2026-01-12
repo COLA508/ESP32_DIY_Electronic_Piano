@@ -118,3 +118,28 @@ Since the pin 1 is connected to pin 2, and pin 3 to pin 4, when the button is pr
 
 ----
 
+5. Speaker
+-----------
+
+The loudspeaker is a classic example of the combination of modern acoustics and electronics. Its core function is to convert electrical signals into sounds that we can hear.
+
+.. image:: _static/Component/11.speaker.png
+   :width: 800
+   :align: center
+
+
+A typical loudspeaker mainly consists of the following components:
+
+Permanent magnet: Provides a constant, strong magnetic field.
+
+Voice coil: A lightweight coil wound around a frame, located within the gap in the magnetic field.
+
+Diaphragm: A conical or dome-shaped thin film, usually made of paper, plastic, or composite materials, with its edges secured to the frame by pleats.
+
+Centering support: A flexible, corrugated ring used to support the voice coil, allowing it to move precisely in the magnetic gap without rubbing against the magnet.
+
+.. image:: _static/Component/12.speaker.png
+   :width: 800
+   :align: center
+
+----

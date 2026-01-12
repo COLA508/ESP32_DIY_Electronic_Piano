@@ -76,7 +76,47 @@ C. After completing this step, close and reopen the Arduino IDE.
 
 ----
 
-3. Add Libraries
+Download  ESP32 Core Package
+----------------------------
+
+A. Click on the **BOARDS MANAGER** icon on the right and search for **"ESP32"**.
+
+.. image:: _static/arduino/19.esp.png
+   :width: 800
+   :align: center
+
+----
+
+B. Find the core package named **esp32 by espressif systems**, select version **2.0.12**, and click the **install** button to install it.
+
+.. image:: _static/arduino/20.esp.png
+   :width: 800
+   :align: center
+----
+
+C. You can view the download progress in the OUTLOOK window.
+
+.. image:: _static/arduino/21.esp.png
+   :width: 800
+   :align: center
+
+----
+
+D. The prompt for successful installation indicates that the ESP32 core package has been successfully installed.
+
+.. image:: _static/arduino/22.esp.png
+   :width: 800
+   :align: center
+
+----
+
+.. note::
+   - It is recommended to install the core package version 2.0.12 for this package. Using other versions may cause program or functional abnormalities
+   - During the download process of the core package, it may fail due to network failures. You can try several more times.
+
+----
+
+4. Add Libraries
 ----------------
 
 Arduino libraries can significantly simplify the development process.
@@ -146,7 +186,7 @@ You can also download required libraries directly using the Arduino IDE.
 
 ----
 
-4. Install Serial Port Tool
+5. Install Serial Port Tool
 ---------------------------
 
  - After connecting the ESP32 to the computer, a USB-to-serial driver needs to be installed to establish communication. For detailed installation steps, please click here. :ref:`Install Serial Port Tool`
@@ -154,7 +194,7 @@ You can also download required libraries directly using the Arduino IDE.
  - If you have already successfully installed the driver, you can skip this step.
 ----
 
-5. Upload Test Code
+6. Upload Test Code
 -------------------
 
  - To verify that the Arduino IDE is configured correctly and the ESP32 development board is working properly, please use the following code to test the onboard LED connected to GPIO pin 2.

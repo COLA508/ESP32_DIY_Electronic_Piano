@@ -127,6 +127,9 @@ The loudspeaker is a classic example of the combination of modern acoustics and 
    :width: 800
    :align: center
 
+.. raw:: html
+
+   <div style="margin-top: 30px;"></div>
 
 A typical loudspeaker mainly consists of the following components:
 
@@ -151,6 +154,9 @@ Centering support: A flexible, corrugated ring used to support the voice coil, a
    :width: 800
    :align: center
 
+.. raw:: html
+
+   <div style="margin-top: 30px;"></div>
 
 The WS2812 RGB 8 LEDs Strip is composed of 8 RGB LEDs. Only one pin is required to control all the LEDs. Each RGB LED has a WS2812 chip, which can be controlled independently. It can realize 256-level brightness display and complete true color display of 16,777,216 colors. At the same time, the pixel contains an intelligent digital interface data latch signal shaping amplifier drive circuit, and a signal shaping circuit is built in to effectively ensure the color height of the pixel point light Consistent.
 
@@ -163,6 +169,10 @@ The data transfer protocol use single NZR communication mode. After the pixel po
 .. image:: _static/Component/14.rgb.png
    :width: 800
    :align: center
+
+.. raw:: html
+
+   <div style="margin-top: 30px;"></div>
 
 LED with low driving voltage, environmental protection and energy saving, high brightness, scattering angle is large, good consistency, low power, long life and other advantages. The control chip integrated in LED above becoming more simple circuit, small volume, convenient installation.
 

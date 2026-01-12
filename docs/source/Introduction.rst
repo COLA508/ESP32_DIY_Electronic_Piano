@@ -52,62 +52,24 @@ Bill of Materials
      - ESP32 Devkit
      - x1
    * - 2
-     - ESP32 Expansion Board
+     - Bread Board
      - x1
    * - 3
-     - LED Module
-     - x1
+     - Speaker
+     - x1  
    * - 4
      - Button Module
-     - x1
+     - x9
    * - 5
-     - Infrared Receiver Module
-     - x1
+     - Button Cap
+     - x9
    * - 6
-     - Buzzer Module
-     - x1
+     - Basswood Board
+     - x7
    * - 7
-     - Motor Fan Module
-     - x1
-   * - 8
-     - RFID Module + ID card
-     - x1
-   * - 9
-     - DHT11 Temperature and Humidity Sensor
-     - x1
-   * - 10
-     - Light Sensor
-     - x1
-   * - 11
-     - Raindrop Sensor
-     - x1
-   * - 12
-     - Human Body Sensor
-     - x1
-   * - 13
-     - RGB Light Strip
-     - x1
-   * - 14
-     - LCD1602 Display
-     - x1
-   * - 15
-     - SG90 Servo
-     - x1
-   * - 16
-     - Infrared remote control
-     - x1
-   * - 17
-     - 6xAA Battery Pack
-     - x1
-   * - 18
-     - TYPE-C Data Cable
-     - x1
-   * - 19
-     - 3P Cable
-     - x10
-   * - 20
-     - 4P Cable
-     - x3
+     - DuPont Line
+     - Several
+
 
 Upon receiving the kit, please first check all components against the above bill of materials. If you find any missing or damaged items, please contact our technical support team immediately.
 

@@ -76,7 +76,7 @@ C. After completing this step, close and reopen the Arduino IDE.
 
 ----
 
-Download  ESP32 Core Package
+3. Download  ESP32 Core Package
 ----------------------------
 
 A. Click on the **BOARDS MANAGER** icon on the right and search for **"ESP32"**.
@@ -87,7 +87,7 @@ A. Click on the **BOARDS MANAGER** icon on the right and search for **"ESP32"**.
 
 ----
 
-B. Find the core package named **esp32 by espressif systems**, select version **2.0.12**, and click the **install** button to install it.
+B. Find the core package named **esp32 by Espressif systems**, select version **2.0.12**, and click the **install** button to install it.
 
 .. image:: _static/arduino/20.esp.png
    :width: 800
@@ -97,7 +97,7 @@ B. Find the core package named **esp32 by espressif systems**, select version **
 C. You can view the download progress in the OUTLOOK window.
 
 .. image:: _static/arduino/21.esp.png
-   :width: 800
+   :width: 1000
    :align: center
 
 ----
@@ -105,7 +105,7 @@ C. You can view the download progress in the OUTLOOK window.
 D. The prompt for successful installation indicates that the ESP32 core package has been successfully installed.
 
 .. image:: _static/arduino/22.esp.png
-   :width: 800
+   :width: 1000
    :align: center
 
 ----

@@ -1,7 +1,8 @@
 Components Introduction
 =======================
 
-Below is the introduction to each component, which contains the operating principle of the component.
+**Below is the introduction to each component, which contains the operating principle of the component.**
+
 ----
 
 
@@ -36,6 +37,10 @@ It features an onboard 2.54mm pitch S/V/G expansion header interface, with indep
    :width: 800
    :align: center
 
+.. raw:: html
+
+   <div style="margin-top: 30px;"></div>
+
 A breadboard is a construction base for prototyping of electronics. Originally the word referred to a literal bread board, a polished piece of wood used for slicing bread. In the 1970s the solderless breadboard (a.k.a. plugboard, a terminal array board) became available and nowadays the term "breadboard" is commonly used to refer to these.
 
 It is used to build and test circuits quickly before finishing any circuit design. 
@@ -49,10 +54,14 @@ Although these holes on the breadboard appear to be independent of each other, t
    :width: 800
    :align: center
 
+.. raw:: html
+
+   <div style="margin-top: 30px;"></div>
+
 .. note:: 
     G1 and G2, V1 and V2 in the breadboard are not connected. Usually you need to use jumper wires to connect them.
 
-.. image:: _staticComponent/3.bread.png
+.. image:: _static/Component/3.bread.png
    :width: 800
    :align: center
 
@@ -67,13 +76,16 @@ Jumper wires are connected by inserting their "end connectors" into the slots of
 
 There are three main types of jumper wires: Female-to-Female, Male-to-Male, and Male-to-Female. The names describe the connectors on each end. Male-to-Female wires have a protruding pin on one end and a recessed female connector on the other. Male-to-Male wires have pins on both ends, while Female-to-Female wires have sockets on both ends.
 
-.. image:: _staticComponent/7.wiring.png
+.. image:: _static/Component/7.wiring.png
    :width: 800
    :align: center
-   
+
+.. raw:: html
+
+   <div style="margin-top: 30px;"></div>
+
 In learning this kit, we only used male-to-male jumper wires.
 
 Multiple types of jumper wires can be utilized in a single project. Although jumper wires come in various colors, these colors do not indicate differences in their function. The colors are simply a design feature to help distinguish and identify the connections between different parts of the circuit more easily.
 
 ----
-

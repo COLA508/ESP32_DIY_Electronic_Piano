@@ -93,3 +93,28 @@ In learning this kit, we only used male-to-male jumper wires.
 Multiple types of jumper wires can be utilized in a single project. Although jumper wires come in various colors, these colors do not indicate differences in their function. The colors are simply a design feature to help distinguish and identify the connections between different parts of the circuit more easily.
 
 ----
+
+4.Button
+--------
+
+.. image:: _static/Component/8.button.png
+   :width: 800
+   :align: center
+
+Buttons are essential components used to control electronic devices, typically functioning as switches to either complete or interrupt circuits. Despite their variety in sizes and shapes, the 12mm button depicted in the accompanying images is our focus here. Within this button, pin 1 is connected to pin 2, and pin 3 is connected to pin 4. Therefore, you only need to establish a connection between pin 1 (or pin 2) and pin 3 (or pin 4) to operate it.
+
+The internal structure of such a button is illustrated below. The symbol shown on the right is commonly used to represent a button in circuit diagrams.
+
+.. image:: _static/Component/9.button.png
+   :width: 800
+   :align: center
+
+Since the pin 1 is connected to pin 2, and pin 3 to pin 4, when the button is pressed, the 4 pins are connected, thus closing the circuit.
+
+
+.. image:: _static/Component/10.button.png
+   :width: 800
+   :align: center
+
+----
+

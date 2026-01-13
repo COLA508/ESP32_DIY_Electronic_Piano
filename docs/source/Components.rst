@@ -94,7 +94,7 @@ Multiple types of jumper wires can be utilized in a single project. Although jum
 
 ----
 
-4.Button
+4. Button
 --------
 
 .. image:: _static/Component/8.button.png

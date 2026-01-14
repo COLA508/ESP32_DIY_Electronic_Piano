@@ -164,9 +164,10 @@ Example code
 Achieved Effect
 ~~~~~~~~~~~~~~~~
 
- - The first LED in the RGB light is red, and it goes from bright to dim and then bright again, just like breathing.
+ - Press the button and the first LED of the RGB light will light up.
+ - Open the serial monitor, which will record the number of times the button was pressed.
 
-.. image:: _static/course/2.course.png
+.. image:: _static/course/3.course.png
    :width: 800
    :align: center
 

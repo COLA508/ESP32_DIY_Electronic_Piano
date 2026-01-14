@@ -144,7 +144,7 @@ B. Unzip the downloaded library file. The library file storage path is **Code an
 
    <div style="margin-top: 30px;"></div>
 
-**Both of these library files need to be imported. **
+**Both of these library files need to be imported.**
 
 ----
 

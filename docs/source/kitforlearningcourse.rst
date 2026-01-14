@@ -70,3 +70,11 @@ Example code
 
 Achieved Effect
 ~~~~~~~~~~~~~~~~
+
+ - The first LED in the RGB light is red, and it goes from bright to dim and then bright again, just like breathing.
+
+.. image:: _static/course/2.course.png
+   :width: 800
+   :align: center
+
+----

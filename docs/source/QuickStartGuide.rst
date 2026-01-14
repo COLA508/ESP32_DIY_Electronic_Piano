@@ -8,6 +8,23 @@ Quick Start Guide
 
 （此处插入组装教程视频）
 
+Wiring
+~~~~~~
+
+.. image:: _static/2.WIRING.png
+   :width: 800
+   :align: center
+
+- RGB —— ESP32 IO15
+- Button1 —— ESP32 IO5
+- Button2 —— ESP32 IO18
+- Button3 —— ESP32 IO19
+- Button4 —— ESP32 IO23
+- Button5 —— ESP32 IO32
+- Button6 —— ESP32 IO33
+- Button7 —— ESP32 IO12
+- Speaker: Red line —— ESP32 IO13，Black line —— ESP32 GND
+
 ----
 
 .. _Install Serial Port Tool:

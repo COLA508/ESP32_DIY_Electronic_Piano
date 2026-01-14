@@ -8,11 +8,10 @@ Quick Start Guide
 
 （此处插入组装教程视频）
 
-Wiring
-~~~~~~
+**Wiring**
 
 .. image:: _static/2.WIRING.png
-   :width: 800
+   :width: 1200
    :align: center
 
 - RGB —— ESP32 IO15

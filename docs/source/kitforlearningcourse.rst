@@ -1,4 +1,4 @@
-kitFor Learning Course
+kit For Learning Course
 ======================
 
 **In this section, we will use the components in this kit to expand our learning, gradually mastering the principles and functional characteristics of each component in order of depth, and completing the corresponding program writing.**

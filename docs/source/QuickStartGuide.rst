@@ -85,7 +85,8 @@ Unzip "Flash Download Tool". The folder contains the following files. Double-cli
 
 .. note::
 
-   - The firmware can be downloaded from the resources we provide; the file name is: Piano.bin
+   - The firmware can be downloaded from the resources we provide; 
+   - The storage path is: Code & Library — Code — 6.ESP32_DIY_Electronic_Piano — 6.ESP32_DIY_Electronic_Piano.bin
 
 ----
 

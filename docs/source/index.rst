@@ -11,8 +11,9 @@ ESP32 DIY Electronic Piano
 
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: 🧩 Experimental Course
 
    ArduinoIDEUserGuide
    Components
+   kitforlearningcourse

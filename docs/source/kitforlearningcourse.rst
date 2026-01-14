@@ -3,6 +3,8 @@ kit For Learning Course
 
 **In this section, we will use the components in this kit to expand our learning, gradually mastering the principles and functional characteristics of each component in order of depth, and completing the corresponding program writing.**
 
+**The sixth code is the complete code for this kit "ESP32 DIY Electronic Piano," which you can click here to view. :ref:`ESP32 DIY Electronic Piano` **
+
 ----
 
 1. Breathing-Lamp
@@ -735,6 +737,12 @@ Example code
 Achieved Effect
 ~~~~~~~~~~~~~~~~
 
- - The three buttons represent Do, La, and Mi, allowing you to use your imagination to play some simple music.
+ - The three buttons represent Do, Mi, and Sol, allowing you to use your imagination to play some simple music.
 
 ----
+
+
+.. _ESP32 DIY Electronic Piano:
+
+6. ESP32 DIY Electronic Piano
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

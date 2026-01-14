@@ -85,6 +85,14 @@ Achieved Effect
 Wiring diagram
 ~~~~~~~~~~~~~~
 
+.. image:: _static/course/2.course.png
+   :width: 800
+   :align: center
+
+.. raw:: html
+
+   <div style="margin-top: 30px;"></div>
+
 - RGB —— ESP32 IO15
 - Button —— ESP32 IO5
 
@@ -171,6 +179,14 @@ Achieved Effect
 Wiring diagram
 ~~~~~~~~~~~~~~
 
+.. image:: _static/course/2.course.png
+   :width: 800
+   :align: center
+
+.. raw:: html
+
+   <div style="margin-top: 30px;"></div>
+  
 - RGB —— ESP32 IO15
 - Button —— ESP32 IO5
 

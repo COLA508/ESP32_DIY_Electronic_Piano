@@ -1279,7 +1279,7 @@ Extended code
 
    <div style="margin-top: 30px;"></div>
 
- - For example, to change the first song to "Ode to Joy", simply modify the original code as follows.
+- For example, to change the first song to "Ode to Joy", simply modify the original code as follows.
 
 .. raw:: html
 

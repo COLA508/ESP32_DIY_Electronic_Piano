@@ -1260,7 +1260,7 @@ Example code
 Achieved Effect
 ~~~~~~~~~~~~~~~~
 
-:ref:`Electronic Piano User Guideo`
+:ref:`Electronic Piano User Guide`
 
 ----
 

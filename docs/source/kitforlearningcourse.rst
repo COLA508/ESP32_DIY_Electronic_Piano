@@ -11,11 +11,15 @@ kitFor Learning Course
 Wiring diagram
 ~~~~~~~~~~~~~~
 
-.. image:: _static/arduino/13.lib.png
+.. image:: _static/course/1.course.png
    :width: 800
    :align: center
-  
- - RGB —— ESP32 IO15
+
+.. raw:: html
+
+   <div style="margin-top: 30px;"></div>
+
+- RGB —— ESP32 IO15
 
 ----
 
@@ -23,7 +27,7 @@ Example code
 ~~~~~~~~~~~~
 
 .. code-block:: cpp
-  
+
     #include <Adafruit_NeoPixel.h>
 
     #define LED_PIN    15      // Data pin connected to GPIO15

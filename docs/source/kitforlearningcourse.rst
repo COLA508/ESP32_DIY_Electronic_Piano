@@ -335,8 +335,4 @@ Achieved Effect
 
  - Press the button, and the RGB lights will switch between different lighting effects.
 
-.. image:: _static/course/3.course.png
-   :width: 1000
-   :align: center
-
 ----

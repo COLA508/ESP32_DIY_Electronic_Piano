@@ -168,7 +168,175 @@ Achieved Effect
  - Open the serial monitor, which will record the number of times the button was pressed.
 
 .. image:: _static/course/3.course.png
+   :width: 1000
+   :align: center
+
+----
+
+3. Rgb_Color_Lamp
+-----------------
+
+Wiring diagram
+~~~~~~~~~~~~~~
+
+.. image:: _static/course/1.course.png
    :width: 800
+   :align: center
+
+.. raw:: html
+
+   <div style="margin-top: 30px;"></div>
+
+- RGB —— ESP32 IO15
+- Button —— ESP32 IO5
+
+----
+
+Example code
+~~~~~~~~~~~~
+
+.. code-block:: cpp
+
+ #include <Adafruit_NeoPixel.h>
+
+ #define BUTTON_PIN 5
+ #define LED_PIN    15
+ #define LED_COUNT  8
+
+ Adafruit_NeoPixel strip(LED_COUNT, LED_PIN, NEO_GRB + NEO_KHZ800);
+
+ // Simple variables
+ int mode = 0;           // 0=Off, 1=Red, 2=Green, 3=Blue, 4=Rainbow, 5=Wave
+ int brightness = 100;
+ bool lastButton = HIGH;
+ unsigned long pressTime = 0;
+ int animationStep = 0;
+
+ void setup() {
+  pinMode(BUTTON_PIN, INPUT_PULLUP);
+  strip.begin();
+  strip.setBrightness(brightness);
+  Serial.begin(115200);
+  Serial.println("8-LED Interactive Light Ready");
+  updateAllLEDs();
+ }
+
+ void loop() {
+  bool button = digitalRead(BUTTON_PIN);
+  
+  // Button pressed
+  if (button == LOW && lastButton == HIGH) {
+    pressTime = millis();
+  }
+  
+  // Button released
+  if (button == HIGH && lastButton == LOW) {
+    unsigned long holdTime = millis() - pressTime;
+    
+    if (holdTime < 500) {
+      // Short press: change mode
+      mode = (mode + 1) % 6;
+      if (mode == 0) mode = 1;  // Skip off mode when cycling
+      Serial.print("Mode: ");
+      Serial.println(mode);
+      updateAllLEDs();
+    } else {
+      // Long press: change brightness
+      brightness += 80;
+      if (brightness > 255) brightness = 30;
+      strip.setBrightness(brightness);
+      Serial.print("Brightness: ");
+      Serial.println(brightness);
+      updateAllLEDs();
+    }
+  }
+  
+  lastButton = button;
+  
+  // Run animations for mode 4 and 5
+  if (mode == 4 || mode == 5) {
+    runSimpleAnimation();
+  }
+  
+  delay(10);
+ }
+
+ void updateAllLEDs() {
+  strip.clear();
+  
+  if (mode == 0) {
+    // All off
+    for (int i = 0; i < LED_COUNT; i++) {
+      strip.setPixelColor(i, 0, 0, 0);
+    }
+  }
+  else if (mode == 1) {
+    // All red
+    for (int i = 0; i < LED_COUNT; i++) {
+      strip.setPixelColor(i, 255, 0, 0);
+    }
+  }
+  else if (mode == 2) {
+    // All green
+    for (int i = 0; i < LED_COUNT; i++) {
+      strip.setPixelColor(i, 0, 255, 0);
+    }
+  }
+  else if (mode == 3) {
+    // All blue
+    for (int i = 0; i < LED_COUNT; i++) {
+      strip.setPixelColor(i, 0, 0, 255);
+    }
+  }
+  else if (mode == 4) {
+    // Rainbow (will be animated)
+    return;
+  }
+  else if (mode == 5) {
+    // Chase effect (will be animated)
+    return;
+  }
+  
+  strip.show();
+ }
+
+ void runSimpleAnimation() {
+  strip.clear();
+  animationStep++;
+  
+  if (mode == 4) {
+    // Rainbow animation
+    for (int i = 0; i < LED_COUNT; i++) {
+      int hue = (animationStep * 10 + i * 30) % 360;
+      hue = hue * 65536L / 360;
+      strip.setPixelColor(i, strip.gamma32(strip.ColorHSV(hue, 255, brightness)));
+    }
+  }
+  else if (mode == 5) {
+    // Chase animation
+    for (int i = 0; i < LED_COUNT; i++) {
+      if ((i + animationStep) % 3 == 0) {
+        strip.setPixelColor(i, 255, 0, 0);
+      } else if ((i + animationStep) % 3 == 1) {
+        strip.setPixelColor(i, 0, 255, 0);
+      } else {
+        strip.setPixelColor(i, 0, 0, 255);
+      }
+    }
+  }
+  
+  strip.show();
+  delay(100);
+ }
+----
+
+Achieved Effect
+~~~~~~~~~~~~~~~~
+
+ - Press the button, and the RGB lights will switch between different lighting effects.
+
+.. image:: _static/course/3.course.png
+   :width: 1000
    :align: center
 
 ----

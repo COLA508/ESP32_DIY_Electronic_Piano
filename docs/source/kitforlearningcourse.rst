@@ -85,14 +85,6 @@ Achieved Effect
 Wiring diagram
 ~~~~~~~~~~~~~~
 
-.. image:: _static/course/1.course.png
-   :width: 800
-   :align: center
-
-.. raw:: html
-
-   <div style="margin-top: 30px;"></div>
-
 - RGB —— ESP32 IO15
 - Button —— ESP32 IO5
 
@@ -179,14 +171,6 @@ Achieved Effect
 Wiring diagram
 ~~~~~~~~~~~~~~
 
-.. image:: _static/course/1.course.png
-   :width: 800
-   :align: center
-
-.. raw:: html
-
-   <div style="margin-top: 30px;"></div>
-
 - RGB —— ESP32 IO15
 - Button —— ESP32 IO5
 
@@ -337,169 +321,6 @@ Achieved Effect
 
 ----
 
-3. Rgb_Color_Lamp
------------------
-
-Wiring diagram
-~~~~~~~~~~~~~~
-
-.. image:: _static/course/1.course.png
-   :width: 800
-   :align: center
-
-.. raw:: html
-
-   <div style="margin-top: 30px;"></div>
-
-- RGB —— ESP32 IO15
-- Button —— ESP32 IO5
-
-----
-
-Example code
-~~~~~~~~~~~~
-
-.. code-block:: cpp
-
- #include <Adafruit_NeoPixel.h>
-
- #define BUTTON_PIN 5
- #define LED_PIN    15
- #define LED_COUNT  8
-
- Adafruit_NeoPixel strip(LED_COUNT, LED_PIN, NEO_GRB + NEO_KHZ800);
-
- // Simple variables
- int mode = 0;           // 0=Off, 1=Red, 2=Green, 3=Blue, 4=Rainbow, 5=Wave
- int brightness = 100;
- bool lastButton = HIGH;
- unsigned long pressTime = 0;
- int animationStep = 0;
-
- void setup() {
-  pinMode(BUTTON_PIN, INPUT_PULLUP);
-  strip.begin();
-  strip.setBrightness(brightness);
-  Serial.begin(115200);
-  Serial.println("8-LED Interactive Light Ready");
-  updateAllLEDs();
- }
-
- void loop() {
-  bool button = digitalRead(BUTTON_PIN);
-  
-  // Button pressed
-  if (button == LOW && lastButton == HIGH) {
-    pressTime = millis();
-  }
-  
-  // Button released
-  if (button == HIGH && lastButton == LOW) {
-    unsigned long holdTime = millis() - pressTime;
-    
-    if (holdTime < 500) {
-      // Short press: change mode
-      mode = (mode + 1) % 6;
-      if (mode == 0) mode = 1;  // Skip off mode when cycling
-      Serial.print("Mode: ");
-      Serial.println(mode);
-      updateAllLEDs();
-    } else {
-      // Long press: change brightness
-      brightness += 80;
-      if (brightness > 255) brightness = 30;
-      strip.setBrightness(brightness);
-      Serial.print("Brightness: ");
-      Serial.println(brightness);
-      updateAllLEDs();
-    }
-  }
-  
-  lastButton = button;
-  
-  // Run animations for mode 4 and 5
-  if (mode == 4 || mode == 5) {
-    runSimpleAnimation();
-  }
-  
-  delay(10);
- }
-
- void updateAllLEDs() {
-  strip.clear();
-  
-  if (mode == 0) {
-    // All off
-    for (int i = 0; i < LED_COUNT; i++) {
-      strip.setPixelColor(i, 0, 0, 0);
-    }
-  }
-  else if (mode == 1) {
-    // All red
-    for (int i = 0; i < LED_COUNT; i++) {
-      strip.setPixelColor(i, 255, 0, 0);
-    }
-  }
-  else if (mode == 2) {
-    // All green
-    for (int i = 0; i < LED_COUNT; i++) {
-      strip.setPixelColor(i, 0, 255, 0);
-    }
-  }
-  else if (mode == 3) {
-    // All blue
-    for (int i = 0; i < LED_COUNT; i++) {
-      strip.setPixelColor(i, 0, 0, 255);
-    }
-  }
-  else if (mode == 4) {
-    // Rainbow (will be animated)
-    return;
-  }
-  else if (mode == 5) {
-    // Chase effect (will be animated)
-    return;
-  }
-  
-  strip.show();
- }
-
- void runSimpleAnimation() {
-  strip.clear();
-  animationStep++;
-  
-  if (mode == 4) {
-    // Rainbow animation
-    for (int i = 0; i < LED_COUNT; i++) {
-      int hue = (animationStep * 10 + i * 30) % 360;
-      hue = hue * 65536L / 360;
-      strip.setPixelColor(i, strip.gamma32(strip.ColorHSV(hue, 255, brightness)));
-    }
-  }
-  else if (mode == 5) {
-    // Chase animation
-    for (int i = 0; i < LED_COUNT; i++) {
-      if ((i + animationStep) % 3 == 0) {
-        strip.setPixelColor(i, 255, 0, 0);
-      } else if ((i + animationStep) % 3 == 1) {
-        strip.setPixelColor(i, 0, 255, 0);
-      } else {
-        strip.setPixelColor(i, 0, 0, 255);
-      }
-    }
-  }
-  
-  strip.show();
-  delay(100);
- }
-----
-
-Achieved Effect
-~~~~~~~~~~~~~~~~
-
- - Press the button, and the RGB lights will switch between different lighting effects.
-
-----
 
 4. Single ToneGenerator
 -----------------------
@@ -507,17 +328,9 @@ Achieved Effect
 Wiring diagram
 ~~~~~~~~~~~~~~
 
-.. image:: _static/course/1.course.png
-   :width: 800
-   :align: center
-
-.. raw:: html
-
-   <div style="margin-top: 30px;"></div>
-
 - RGB —— ESP32 IO15
 - Button —— ESP32 IO5
-
+- Speaker —— ESP32 IO33
 ----
 
 Example code
@@ -529,7 +342,7 @@ Example code
 
  // Pin definitions
  #define BUTTON_PIN 5      // Button to change notes
- #define SPEAKER_PIN 19    // Speaker positive pin (negative to GND)
+ #define SPEAKER_PIN 33    // Speaker positive pin (negative to GND)
  #define LED_PIN    15     // LED for visual feedback
 
  #define LED_COUNT 1
@@ -683,5 +496,245 @@ Achieved Effect
 ~~~~~~~~~~~~~~~~
 
  - Press the button, and the speaker will play the Do-Si syllables in sequence and light up different colored lights.
+
+----
+
+5. Triple Bond Piano
+--------------------
+
+Wiring diagram
+~~~~~~~~~~~~~~
+
+- RGB —— ESP32 IO15
+- Button1 —— ESP32 IO5
+- Button2 —— ESP32 IO18
+- Button3 —— ESP32 IO5
+- Speaker —— ESP32 IO33
+
+----
+
+Example code
+~~~~~~~~~~~~
+
+.. code-block:: cpp
+
+ #include <Adafruit_NeoPixel.h>
+
+ #define BTN1 5   // Do
+ #define BTN2 18   // Mi  
+ #define BTN3 19   // Sol
+ #define SPEAKER 33
+ #define LED_PIN 15
+
+ Adafruit_NeoPixel leds(3, LED_PIN, NEO_GRB + NEO_KHZ800);
+
+ // Notes for C major scale
+ int notes[] = {262, 294, 330, 349, 392, 440, 494};
+ // Our buttons: Do(0), Mi(2), Sol(4)
+ int buttonNotes[] = {0, 2, 4};  // Indexes in notes array
+
+ // Chord definitions
+ #define CHORD_C_MAJOR 0     // Do + Mi + Sol
+ #define CHORD_F_MAJOR 1     // Fa + La + Do
+ #define CHORD_G_MAJOR 2     // Sol + Si + Re
+
+ int currentChord = -1;      // -1 = no chord
+ bool buttons[3] = {false, false, false};
+ unsigned long buttonTime[3] = {0, 0, 0};
+
+ void setup() {
+  Serial.begin(115200);
+  
+  pinMode(BTN1, INPUT_PULLUP);
+  pinMode(BTN2, INPUT_PULLUP);
+  pinMode(BTN3, INPUT_PULLUP);
+  
+  ledcSetup(0, 2000, 8);
+  ledcAttachPin(SPEAKER, 0);
+  
+  leds.begin();
+  leds.setBrightness(100);
+  
+  Serial.println("Chord Piano - Three Keys");
+  Serial.println("Do+Mi = Interval");
+  Serial.println("Do+Mi+Sol = C Major Chord");
+  Serial.println("Mi+Sol = Another interval");
+ }
+
+ void loop() {
+  // Read buttons with debounce
+  readButton(0, BTN1);
+  readButton(1, BTN2);
+  readButton(2, BTN3);
+  
+  // Check what's being pressed
+  int pressedCount = 0;
+  for (int i = 0; i < 3; i++) {
+    if (buttons[i]) pressedCount++;
+  }
+  
+  // Play appropriate sound
+  if (pressedCount == 0) {
+    ledcWriteTone(0, 0);  // Stop sound
+    currentChord = -1;
+  }
+  else if (pressedCount == 1) {
+    // Single note
+    for (int i = 0; i < 3; i++) {
+      if (buttons[i]) {
+        playSingleNote(i);
+        break;
+      }
+    }
+    currentChord = -1;
+  }
+  else {
+    // Multiple buttons - check for chords
+    checkChord();
+  }
+  
+  // Update LEDs
+  updateLEDs();
+  
+  delay(10);
+ }  
+
+ void readButton(int index, int pin) {
+  bool state = digitalRead(pin);
+  
+  if (state == LOW && !buttons[index]) {
+    // Button just pressed
+    if (millis() - buttonTime[index] > 50) {  // Debounce
+      buttons[index] = true;
+      buttonTime[index] = millis();
+      Serial.print("Button ");
+      Serial.print(index + 1);
+      Serial.println(" pressed");
+    }
+  }
+  else if (state == HIGH && buttons[index]) {
+    // Button just released
+    buttons[index] = false;
+    Serial.print("Button ");
+    Serial.print(index + 1);
+    Serial.println(" released");
+  }
+ }
+
+ void playSingleNote(int buttonIndex) {
+  int noteIndex = buttonNotes[buttonIndex];
+  ledcWriteTone(0, notes[noteIndex]);
+  
+  // LED feedback
+  for (int i = 0; i < 3; i++) {
+    if (i == buttonIndex) {
+      setLEDColor(i, true);
+    } else {
+      setLEDColor(i, false);
+    }
+  }
+ }
+
+ void checkChord() {
+  // Check which buttons are pressed
+  bool doPressed = buttons[0];  // Button 1
+  bool miPressed = buttons[1];  // Button 2
+  bool solPressed = buttons[2]; // Button 3
+  
+  // Check for C Major chord (Do + Mi + Sol)
+  if (doPressed && miPressed && solPressed) {
+    if (currentChord != CHORD_C_MAJOR) {
+      currentChord = CHORD_C_MAJOR;
+      Serial.println("C Major Chord!");
+      playChord(CHORD_C_MAJOR);
+    }
+  }
+  // Check for Do+Mi interval
+  else if (doPressed && miPressed) {
+    if (currentChord != 10) {  // Custom code for this interval
+      currentChord = 10;
+      Serial.println("Do-Mi Interval");
+      // Play alternating between Do and Mi
+      static bool alt = false;
+      if (alt) {
+        ledcWriteTone(0, notes[0]);  // Do
+      } else {
+        ledcWriteTone(0, notes[2]);  // Mi
+      }
+      alt = !alt;
+    }
+  }
+  // Check for Mi+Sol interval
+  else if (miPressed && solPressed) {
+    if (currentChord != 11) {
+      currentChord = 11;
+      Serial.println("Mi-Sol Interval");
+      // Play alternating
+      static bool alt = false;
+      if (alt) {
+        ledcWriteTone(0, notes[2]);  // Mi
+      } else {
+        ledcWriteTone(0, notes[4]);  // Sol
+      }
+      alt = !alt;
+    }
+  }
+  // Check for Do+Sol interval
+  else if (doPressed && solPressed) {
+    if (currentChord != 12) {
+      currentChord = 12;
+      Serial.println("Do-Sol Interval (Perfect 5th)");
+      ledcWriteTone(0, notes[0]);  // Play Do (root)
+    }
+  }
+ }
+
+ void playChord(int chordType) {
+  switch(chordType) {
+    case CHORD_C_MAJOR:
+      // Play C Major chord (Do, Mi, Sol)
+      // We'll play the root note, but could also cycle through chord notes
+      ledcWriteTone(0, notes[0]);  // Do
+      
+      // Chord animation on LEDs
+      static unsigned long lastBlink = 0;
+      if (millis() - lastBlink > 200) {
+        lastBlink = millis();
+        for (int i = 0; i < 3; i++) {
+          leds.setPixelColor(i, 
+            buttons[i] ? leds.Color(255, 255, 255) : leds.Color(0, 0, 0));
+        }
+        leds.show();
+        delay(50);
+        updateLEDs();
+      }
+      break;
+  }
+ }
+
+ void setLEDColor(int index, bool pressed) {
+  int colors[][3] = {{255,0,0}, {0,255,0}, {0,0,255}};
+  
+  if (pressed) {
+    leds.setPixelColor(index, colors[index][0], colors[index][1], colors[index][2]);
+  } else {
+    leds.setPixelColor(index, 
+      colors[index][0]/5, colors[index][1]/5, colors[index][2]/5);
+  }
+ }
+
+ void updateLEDs() {
+  for (int i = 0; i < 3; i++) {
+    setLEDColor(i, buttons[i]);
+  }
+  leds.show();
+ }
+
+----
+
+Achieved Effect
+~~~~~~~~~~~~~~~~
+
+ - The three buttons represent Do, La, and Mi, allowing you to use your imagination to play some simple music.
 
 ----

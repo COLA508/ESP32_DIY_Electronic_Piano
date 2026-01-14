@@ -126,6 +126,8 @@ Unzip "Flash Download Tool". The folder contains the following files. Double-cli
 
 ----
 
+.. _Electronic Piano User Guide:
+
 5. Electronic Piano User Guide
 ------------------------------
 

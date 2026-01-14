@@ -748,3 +748,565 @@ Achieved Effect
 
 6. ESP32 DIY Electronic Piano
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Wiring diagram
+~~~~~~~~~~~~~~
+
+- RGB —— ESP32 IO15
+- Button1 —— ESP32 IO5
+- Button2 —— ESP32 IO18
+- Button3 —— ESP32 IO19
+- Button4 —— ESP32 IO23
+- Button5 —— ESP32 IO32
+- Button6 —— ESP32 IO33
+- Button7 —— ESP32 IO12
+- Speaker —— ESP32 IO13
+
+----
+
+Example code
+~~~~~~~~~~~~
+
+.. code-block:: cpp
+
+  #include <FastLED.h>
+  #include <WiFi.h>
+  #include <WebServer.h>
+  
+  const char* ssid = "ESP32_Piano";
+  const char* password = "12345678";
+  
+  WebServer server(80);
+  
+  #define BUZZER_PIN     13
+  #define BUZZER_CHANNEL 0
+  #define AUTO_KEY_PIN   4
+  
+  #define LED_PIN   15
+  #define NUM_LEDS  8
+  CRGB leds[NUM_LEDS];
+  
+  int keyPins[7] = {5, 18, 19, 23, 32, 33, 12};
+  int noteFreq[7] = {262, 294, 330, 349, 392, 440, 494};
+  
+  uint8_t keyColors[7] = {0, 32, 64, 96, 128, 160, 192};
+  
+  #define C4 262
+  #define D4 294
+  #define E4 330
+  #define F4 349
+  #define G4 392
+  #define A4 440
+  #define B4 494
+  #define C5 523
+  #define D5 587
+  
+  int song1[] = {
+    C4,C4,G4,G4,A4,A4,G4,
+    F4,F4,E4,E4,D4,D4,C4,
+    G4,G4,F4,F4,E4,E4,D4,
+    G4,G4,F4,F4,E4,E4,D4,
+    C4,C4,G4,G4,A4,A4,G4,
+    F4,F4,E4,E4,D4,D4,C4
+  };
+  
+  int rhythm1[] = {
+    1,1,1,1,1,1,2,
+    1,1,1,1,1,1,2,
+    1,1,1,1,1,1,2,
+    1,1,1,1,1,1,2,
+    1,1,1,1,1,1,2,
+    1,1,1,1,1,1,2
+  };
+  
+  int song2[] = {
+    E4,E4,E4,  E4,E4,E4,
+    E4,G4,C4,D4,E4,
+    F4,F4,F4,F4,
+    F4,E4,E4,E4,
+    E4,D4,D4,E4,
+    D4,G4,
+  
+    E4,E4,E4,  E4,E4,E4,
+    E4,G4,C4,D4,E4,
+    F4,F4,F4,F4,
+    F4,E4,E4,E4,
+    G4,G4,F4,D4,C4
+  };
+  
+  int rhythm2[] = {
+    1,1,2, 1,1,2,
+    1,1,1,1,2,
+    1,1,1,1,
+    1,1,1,1,
+    1,1,1,1,
+    2,2,
+  
+    1,1,2, 1,1,2,
+    1,1,1,1,2,
+    1,1,1,1,
+    1,1,1,1,
+    2,2,2,2,4
+  };
+  
+  int song3[] = {
+    C4,C4,D4,C4,F4,E4,
+    C4,C4,D4,C4,G4,F4,
+    C4,C4,C5,A4,F4,E4,D4,
+    B4,B4,A4,F4,G4,F4
+  };
+  
+  int rhythm3[] = {
+    1,2,1,4,4,6,
+    1,2,1,4,4,6,
+    1,2,4,4,4,4,6,
+    1,2,4,4,6,8
+  };
+  
+  int* songs[]   = {song1, song2, song3};
+  int* rhythms[] = {rhythm1, rhythm2, rhythm3};
+  int songLen[] = {
+    sizeof(song1)/sizeof(int),
+    sizeof(song2)/sizeof(int),
+    sizeof(song3)/sizeof(int)
+  };
+  
+  int songIndex = -1;
+  bool autoPlay = false;
+  uint8_t timeHue = 0;
+  
+  #define BPM 120
+  #define NOTE_TIME (60000 / BPM / 2)
+  
+  bool manualNotePlaying = false;
+  unsigned long manualNoteOffTime = 0;
+  
+  bool webControlActive = false;
+  int lastWebKey = -1;
+  unsigned long lastWebKeyTime = 0;
+  #define WEB_KEY_TIMEOUT 100
+  
+  void lightKeyLED(int keyIndex) {
+    FastLED.clear();
+  
+    leds[keyIndex] = CHSV(keyColors[keyIndex], 255, 255);
+  
+    if (keyIndex > 0) {
+      leds[keyIndex - 1] = CHSV(keyColors[keyIndex] + 20, 200, 100);
+    }
+    if (keyIndex < NUM_LEDS - 1) {
+      leds[keyIndex + 1] = CHSV(keyColors[keyIndex] - 20, 200, 100);
+    }
+  
+    FastLED.show();
+  }
+  
+  uint8_t freqToHue(int freq) {
+    freq = constrain(freq, 262, 587);
+    return map(freq, 262, 587, 180, 0);
+  }
+  
+  void colorBurst(uint8_t baseHue, uint8_t brightness) {
+    for (int i = 0; i < NUM_LEDS; i++) {
+      leds[i] = CHSV(baseHue + i * 18 + timeHue, 255, brightness);
+    }
+    timeHue += 6;
+    FastLED.show();
+  }
+  
+  void rainbowChase(uint8_t baseHue, int step) {
+    fadeToBlackBy(leds, NUM_LEDS, 60);
+    leds[step % NUM_LEDS] = CHSV(baseHue + timeHue, 255, 255);
+    timeHue += 10;
+    FastLED.show();
+  }
+  
+  void rainbowBreath(uint8_t baseHue, uint8_t brightness) {
+    for (int i = 0; i < NUM_LEDS; i++) {
+      leds[i] = CHSV(baseHue + i * 12 + timeHue, 200, brightness);
+    }
+    timeHue += 3;
+    FastLED.show();
+  }
+  
+  void playNote(int noteIndex, bool fromWeb = false) {
+    if (noteIndex >= 0 && noteIndex < 7) {
+      ledcWriteTone(BUZZER_CHANNEL, noteFreq[noteIndex]);
+      lightKeyLED(noteIndex);
+      manualNoteOffTime = millis() + NOTE_TIME;
+      manualNotePlaying = true;
+      
+      if (fromWeb) {
+        webControlActive = true;
+        lastWebKey = noteIndex;
+        lastWebKeyTime = millis();
+      }
+    }
+  }
+  
+  void startAutoPlay() {
+    autoPlay = true;
+    songIndex = (songIndex + 1) % 3;
+    webControlActive = true;
+  }
+  
+  const char* htmlContent = R"rawliteral(
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>ESP32 Piano</title>
+      <style>
+          * {
+              margin: 0;
+              padding: 0;
+              box-sizing: border-box;
+          }
+          
+          body {
+              background: #000;
+              height: 100vh;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              font-family: Arial, sans-serif;
+          }
+          
+          .piano-keys {
+              display: flex;
+              width: 95%;
+              height: 70vh;
+              gap: 10px;
+              padding: 10px;
+          }
+          
+          .piano-key {
+              flex: 1;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              border-radius: 15px;
+              cursor: pointer;
+              user-select: none;
+              transition: transform 0.1s;
+              font-weight: bold;
+              font-size: 2.5em;
+              box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+          }
+          
+          .key-1, .key-3, .key-5, .key-7 {
+              background: white;
+              color: black;
+          }
+          
+          .key-2, .key-4, .key-6 {
+              background: black;
+              color: white;
+              border: 2px solid #333;
+          }
+          
+          .key-auto {
+              background: linear-gradient(45deg, #ff3366, #33ccff);
+              color: white;
+          }
+          
+          .piano-key:active {
+              transform: scale(0.95);
+          }
+          
+          .key-number {
+              font-size: 1.2em;
+              margin-bottom: 5px;
+          }
+          
+          .key-text {
+              font-size: 0.6em;
+          }
+      </style>
+  </head>
+  <body>
+      <div class="piano-keys">
+          <div class="piano-key key-1" data-key="0">
+              <div class="key-number">1</div>
+              <div class="key-text">Do</div>
+          </div>
+          <div class="piano-key key-2" data-key="1">
+              <div class="key-number">2</div>
+              <div class="key-text">Re</div>
+          </div>
+          <div class="piano-key key-3" data-key="2">
+              <div class="key-number">3</div>
+              <div class="key-text">Mi</div>
+          </div>
+          <div class="piano-key key-4" data-key="3">
+              <div class="key-number">4</div>
+              <div class="key-text">Fa</div>
+          </div>
+          <div class="piano-key key-5" data-key="4">
+              <div class="key-number">5</div>
+              <div class="key-text">Sol</div>
+          </div>
+          <div class="piano-key key-6" data-key="5">
+              <div class="key-number">6</div>
+              <div class="key-text">La</div>
+          </div>
+          <div class="piano-key key-7" data-key="6">
+              <div class="key-number">7</div>
+              <div class="key-text">Si</div>
+          </div>
+          <div class="piano-key key-auto" data-key="auto">
+              <div class="key-number">AUTO</div>
+          </div>
+      </div>
+  
+      <script>
+          document.querySelectorAll('.piano-key').forEach(key => {
+              key.addEventListener('mousedown', function() {
+                  const keyData = this.dataset.key;
+                  
+                  if (keyData === 'auto') {
+                      fetch('/auto');
+                  } else {
+                      fetch(`/play?key=${keyData}`);
+                  }
+                  
+                  this.style.transform = 'scale(0.95)';
+              });
+              
+              key.addEventListener('mouseup', function() {
+                  this.style.transform = '';
+              });
+              
+              key.addEventListener('mouseleave', function() {
+                  this.style.transform = '';
+              });
+              
+              key.addEventListener('touchstart', function(e) {
+                  e.preventDefault();
+                  const keyData = this.dataset.key;
+                  
+                  if (keyData === 'auto') {
+                      fetch('/auto');
+                  } else {
+                      fetch(`/play?key=${keyData}`);
+                  }
+                  
+                  this.style.transform = 'scale(0.95)';
+              });
+              
+              key.addEventListener('touchend', function() {
+                  this.style.transform = '';
+              });
+          });
+          
+          document.addEventListener('keydown', function(e) {
+              if (e.key >= '1' && e.key <= '7') {
+                  const keyIndex = parseInt(e.key) - 1;
+                  const keyElement = document.querySelector(`[data-key="${keyIndex}"]`);
+                  if (keyElement) {
+                      keyElement.style.transform = 'scale(0.95)';
+                      fetch(`/play?key=${keyIndex}`);
+                  }
+              }
+              
+              if (e.key === 'a' || e.key === 'A') {
+                  const autoKey = document.querySelector('[data-key="auto"]');
+                  if (autoKey) {
+                      autoKey.style.transform = 'scale(0.95)';
+                      fetch('/auto');
+                  }
+              }
+          });
+          
+          document.addEventListener('keyup', function(e) {
+              if (e.key >= '1' && e.key <= '7') {
+                  const keyIndex = parseInt(e.key) - 1;
+                  const keyElement = document.querySelector(`[data-key="${keyIndex}"]`);
+                  if (keyElement) {
+                      keyElement.style.transform = '';
+                  }
+              }
+              
+              if (e.key === 'a' || e.key === 'A') {
+                  const autoKey = document.querySelector('[data-key="auto"]');
+                  if (autoKey) {
+                      autoKey.style.transform = '';
+                  }
+              }
+          });
+      </script>
+  </body>
+  </html>
+  )rawliteral";
+  
+  void handleRoot() {
+    server.send(200, "text/html", htmlContent);
+  }
+  
+  void handlePlay() {
+    if (server.hasArg("key")) {
+      int keyIndex = server.arg("key").toInt();
+      if (keyIndex >= 0 && keyIndex < 7) {
+        playNote(keyIndex, true);
+        server.send(200, "text/plain", "OK");
+      }
+    }
+  }
+  
+  void handleAuto() {
+    startAutoPlay();
+    server.send(200, "text/plain", "OK");
+  }
+  
+  void setup() {
+    Serial.begin(115200);
+    
+    for (int i = 0; i < 7; i++) pinMode(keyPins[i], INPUT_PULLUP);
+    pinMode(AUTO_KEY_PIN, INPUT_PULLUP);
+  
+    ledcSetup(BUZZER_CHANNEL, 2000, 8);
+    ledcAttachPin(BUZZER_PIN, BUZZER_CHANNEL);
+  
+    FastLED.addLeds<WS2812, LED_PIN, GRB>(leds, NUM_LEDS);
+    FastLED.setBrightness(200);
+    FastLED.clear();
+    FastLED.show();
+  
+    WiFi.softAP(ssid, password);
+    Serial.println("AP Started");
+    Serial.print("SSID: ");
+    Serial.println(ssid);
+    Serial.print("IP: ");
+    Serial.println(WiFi.softAPIP());
+  
+    server.on("/", handleRoot);
+    server.on("/play", handlePlay);
+    server.on("/auto", handleAuto);
+    
+    server.begin();
+    Serial.println("Web Server Started");
+  }
+  
+  void loop() {
+    server.handleClient();
+    
+    if (webControlActive && (millis() - lastWebKeyTime > WEB_KEY_TIMEOUT)) {
+      if (millis() > manualNoteOffTime) {
+        webControlActive = false;
+      }
+    }
+  
+    if (autoPlay && songIndex >= 0 && songIndex < 3) {
+      static int noteIndex = 0;
+      static unsigned long nextNoteTime = 0;
+      
+      if (millis() >= nextNoteTime) {
+        if (noteIndex < songLen[songIndex]) {
+          int freq = songs[songIndex][noteIndex];
+          ledcWriteTone(BUZZER_CHANNEL, freq);
+          
+          uint8_t hue = freqToHue(freq);
+          if (songIndex == 0) colorBurst(hue, 255);
+          else if (songIndex == 1) rainbowChase(hue, noteIndex);
+          else rainbowBreath(hue, 200);
+          
+          int delayTime = 220 * rhythms[songIndex][noteIndex];
+          nextNoteTime = millis() + delayTime;
+          noteIndex++;
+        } else {
+          noteIndex = 0;
+          autoPlay = false;
+          webControlActive = false;
+          ledcWriteTone(BUZZER_CHANNEL, 0);
+        }
+      }
+    }
+    
+    if (!webControlActive && !autoPlay) {
+      if (manualNotePlaying && millis() > manualNoteOffTime) {
+        ledcWriteTone(BUZZER_CHANNEL, 0);
+        manualNotePlaying = false;
+      }
+      
+      if (!manualNotePlaying) {
+        for (int i = 0; i < 7; i++) {
+          if (digitalRead(keyPins[i]) == LOW) {
+            playNote(i, false);
+            break;
+          }
+        }
+      }
+      
+      if (digitalRead(AUTO_KEY_PIN) == LOW) {
+        delay(20);
+        if (digitalRead(AUTO_KEY_PIN) == LOW) {
+          startAutoPlay();
+          while (digitalRead(AUTO_KEY_PIN) == LOW);
+        }
+      }
+    }
+    
+    if (!manualNotePlaying && !autoPlay) {
+      fadeToBlackBy(leds, NUM_LEDS, 30);
+      FastLED.show();
+    }
+    
+    delay(5);
+  }
+
+----
+
+Achieved Effect
+~~~~~~~~~~~~~~~~
+
+:ref:`Electronic Piano User Guideo`
+
+----
+
+Extended code
+~~~~~~~~~~~~
+
+ - You can modify the code in the three autoplay tracks to change them to your preferred music.
+
+ - For example, if you want to modify the first song, you only need to modify the two code snippets shown in the image to match the rhythm of the corresponding song.
+
+.. image:: _static/course/1.course.png
+   :width: 800
+   :align: center
+
+.. raw:: html
+
+   <div style="margin-top: 30px;"></div>
+
+ - For example, to change the first song to "Ode to Joy", simply modify the original code as follows.
+
+.. code-block:: cpp
+
+  int song1[] = {
+  E4,E4,F4,G4,G4,F4,E4,D4,
+  C4,C4,D4,E4,E4,D4,D4,
+  E4,E4,F4,G4,G4,F4,E4,D4,
+  C4,C4,D4,E4,D4,C4,C4
+ };
+
+.. code-block:: cpp
+  int rhythm1[] = {
+  2,2,2,2,2,2,2,2,
+  2,2,2,2,3,1,2,
+  2,2,2,2,2,2,2,2,
+  2,2,2,2,2,2,4
+ };
+
+----
+
+.. note::
+
+ The number of notes must match the number of rhythms; otherwise, playback will fail.
+
+ Predefined pitch constants can be used: C4, D4, E4, F4, G4, A4, B4, C5, D5.
+
+ You can use your imagination to combine any tone to create your own music.
+
+----

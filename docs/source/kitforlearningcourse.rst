@@ -85,7 +85,7 @@ Achieved Effect
 Wiring diagram
 ~~~~~~~~~~~~~~
 
-.. image:: _static/course/2.course.png
+.. image:: _static/course/6.course.png
    :width: 800
    :align: center
 
@@ -179,7 +179,7 @@ Achieved Effect
 Wiring diagram
 ~~~~~~~~~~~~~~
 
-.. image:: _static/course/2.course.png
+.. image:: _static/course/6.course.png
    :width: 800
    :align: center
 

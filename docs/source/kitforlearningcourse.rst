@@ -743,11 +743,10 @@ Achieved Effect
 
 ----
 
-
 .. _ESP32 DIY Electronic Piano:
 
 6. ESP32 DIY Electronic Piano
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------------
 
 Wiring diagram
 ~~~~~~~~~~~~~~
@@ -1272,7 +1271,7 @@ Extended code
 
  - For example, if you want to modify the first song, you only need to modify the two code snippets shown in the image to match the rhythm of the corresponding song.
 
-.. image:: _static/course/1.course.png
+.. image:: _static/course/4.course.png
    :width: 800
    :align: center
 
@@ -1282,6 +1281,10 @@ Extended code
 
  - For example, to change the first song to "Ode to Joy", simply modify the original code as follows.
 
+.. raw:: html
+
+   <div style="margin-top: 30px;"></div>
+
 .. code-block:: cpp
 
   int song1[] = {
@@ -1290,6 +1293,8 @@ Extended code
   E4,E4,F4,G4,G4,F4,E4,D4,
   C4,C4,D4,E4,D4,C4,C4
  };
+
+----
 
 .. code-block:: cpp
   int rhythm1[] = {
@@ -1303,10 +1308,10 @@ Extended code
 
 .. note::
 
- The number of notes must match the number of rhythms; otherwise, playback will fail.
+ - The number of notes must match the number of rhythms; otherwise, playback will fail.
 
- Predefined pitch constants can be used: C4, D4, E4, F4, G4, A4, B4, C5, D5.
+ - Predefined pitch constants can be used: C4, D4, E4, F4, G4, A4, B4, C5, D5.
 
- You can use your imagination to combine any tone to create your own music.
+ - You can use your imagination to combine any tone to create your own music.
 
 ----

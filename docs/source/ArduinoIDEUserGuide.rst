@@ -133,7 +133,18 @@ A. We've compiled all the libraries necessary to run this suite. Please click th
 
 B. Unzip the downloaded library file. The library file storage path is **Code and Libraries** → **Libraries** . Open it and confirm that it contains the library file shown in the figure below.
 
-（插入库文件图片）
+- Adafruit_NeoPixel.zip
+- FastLED.zip
+
+.. image:: _static/arduino/23.lib.png
+   :width: 1000
+   :align: center
+
+.. raw:: html
+
+   <div style="margin-top: 30px;"></div>
+
+**Both of these library files need to be imported. **
 
 ----
 

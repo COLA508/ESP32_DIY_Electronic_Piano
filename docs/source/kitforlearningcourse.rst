@@ -77,10 +77,6 @@ Achieved Effect
 
  - The first LED in the RGB light is red, and it goes from bright to dim and then bright again, just like breathing.
 
-.. image:: _static/course/2.course.png
-   :width: 800
-   :align: center
-
 ----
 
 2. Button_Count
@@ -332,6 +328,15 @@ Achieved Effect
 Wiring diagram
 ~~~~~~~~~~~~~~
 
+.. image:: _static/course/2.course.png
+   :width: 800
+   :align: center
+
+.. raw:: html
+
+   <div style="margin-top: 30px;"></div>
+  
+
 - RGB —— ESP32 IO15
 - Button —— ESP32 IO5
 - Speaker —— ESP32 IO33
@@ -508,6 +513,14 @@ Achieved Effect
 
 Wiring diagram
 ~~~~~~~~~~~~~~
+
+.. image:: _static/course/2.course.png
+   :width: 800
+   :align: center
+
+.. raw:: html
+
+   <div style="margin-top: 30px;"></div>
 
 - RGB —— ESP32 IO15
 - Button1 —— ESP32 IO5

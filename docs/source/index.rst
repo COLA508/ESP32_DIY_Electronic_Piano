@@ -7,7 +7,7 @@ ESP32 DIY Electronic Piano
 
    Introduction
    QuickStartGuide
-
+   FrequentlyAskedQuestions
 
 
 .. toctree::

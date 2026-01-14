@@ -3,7 +3,9 @@ kit For Learning Course
 
 **In this section, we will use the components in this kit to expand our learning, gradually mastering the principles and functional characteristics of each component in order of depth, and completing the corresponding program writing.**
 
-**The sixth code is the complete code for this kit "ESP32 DIY Electronic Piano," which you can click here to view. :ref:`ESP32 DIY Electronic Piano` **
+**The sixth code is the complete code for this kit "ESP32 DIY Electronic Piano," which you can click here to view.**
+
+:ref:`ESP32 DIY Electronic Piano`
 
 ----
 

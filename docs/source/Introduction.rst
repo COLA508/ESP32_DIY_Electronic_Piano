@@ -64,9 +64,24 @@ Bill of Materials
      - Button Cap
      - x9
    * - 6
+     - RGB
+     - x1 
+   * - 7
+     - Screw package
+     - x1 
+   * - 8
+     - Screw package
+     - x1 
+   * - 9
+     - Phillips screwdriver
+     - x1 
+   * - 10
+     - Type-C data cable
+     - x1
+   * - 11
      - Basswood Board
      - x7
-   * - 7
+   * - 12
      - Jumper Wires
      - Several
 

@@ -41,6 +41,10 @@ In the resource folder provided by this package, locate the "CH340 driver instal
    :width: 800
    :align: center
 
+.. raw:: html
+
+   <div style="margin-top: 30px;"></div>
+
 .. image:: _static/install/2.CH340.png
    :width: 800
    :align: center

@@ -282,8 +282,16 @@ D. After clicking upload, the upload progress will be displayed in the output wi
    :width: 800
    :align: center
 
+.. raw:: html
+
+   <div style="margin-top: 30px;"></div>
+
 E. Once the output display shows that the upload is complete, press the RST button on the ESP32 development board to start the program.
 
+.. raw:: html
+
+   <div style="margin-top: 30px;"></div>
+   
 F. After pressing the RST key, you can see the onboard LEDs of the ESP32 development board flashing, proving that the Arduino IDE configuration and the development board are working properly.
 
 .. image:: _static/arduino/18.code.png

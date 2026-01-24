@@ -27,7 +27,7 @@ Frequently Asked Questions
 
 **3.Kept getting errors when uploading code using the Arduino IDE.**
 
- - Check if the ESP32 development board core package is version 3.2.0 or higher.
+ - Check if the ESP32 development board core package is version 2.0.12.
  - Check if all library files have been imported and check for updates.
 
 ----

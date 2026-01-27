@@ -792,6 +792,7 @@ Wiring diagram
 - Button5 —— ESP32 IO32
 - Button6 —— ESP32 IO33
 - Button7 —— ESP32 IO12
+- Button8 —— ESP32 IO4
 - Speaker —— ESP32 IO13
 
 ----

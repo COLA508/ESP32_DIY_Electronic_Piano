@@ -24,6 +24,11 @@ Quick Start Guide
 - Button7 —— ESP32 IO12
 - Speaker: Red line —— ESP32 IO13，Black line —— ESP32 GND
 
+.. note::
+   
+   - One end of each of the eight buttons is connected in series and then connected to the GND pin of the ESP32.
+   - Connect the RGB LED strip's data input line (DIN) to the GPIO15 pin of the ESP32. When connecting, ensure that the end of the LED strip connector with the raised marking faces away from the Type-C interface on the development board.
+
 ----
 
 .. _Install Serial Port Tool:

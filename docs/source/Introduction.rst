@@ -36,7 +36,7 @@ Automatic mode includes original track rhythm reproduction.
 Bill of Materials
 -----------------
 
-.. image:: _static/1-1/1.bom.jpg
+.. image:: _static/3.BOM.png
    :width: 1000
    :align: center
 

@@ -6,7 +6,7 @@
 
 **ESP32 DIY Electronic Piano**
 
-.. image:: _static/1-1/2.introduct.png
+.. image:: _static/4.piano.png
    :width: 800
    :align: center
 
@@ -82,7 +82,7 @@ Bill of Materials
      - Basswood Board
      - x7
    * - 12
-     - Jumper Wires
+     - Jumper Wire
      - Several
 
 

@@ -14,6 +14,10 @@ Quick Start Guide
    :width: 1200
    :align: center
 
+.. raw:: html
+
+   <div style="margin-top: 30px;"></div>
+
 - RGB —— ESP32 IO15
 - Button1 —— ESP32 IO5
 - Button2 —— ESP32 IO18

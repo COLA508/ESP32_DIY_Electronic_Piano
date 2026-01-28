@@ -10,7 +10,7 @@ Quick Start Guide
 
 **Wiring**
 
-.. image:: _static/2.WIRING.png
+.. image:: _static/2.WIRING2.png
    :width: 1200
    :align: center
 
@@ -28,7 +28,7 @@ Quick Start Guide
 .. note::
    
    - One end of each of the eight buttons is connected in series and then connected to the GND pin of the ESP32.
-   - Connect the RGB LED strip's data input line (DIN) to the GPIO15 pin of the ESP32. When connecting, ensure that the end of the LED strip connector with the raised marking faces away from the Type-C interface on the development board.
+   - Connect the RGB LED strip's data input line（DIN）to the GPIO15 pin of the ESP32. When connecting, ensure that the end of the LED strip connector with the raised marking faces away from the Type-C interface on the development board.
 
 ----
 

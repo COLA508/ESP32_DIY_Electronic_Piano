@@ -31,6 +31,7 @@ Automatic Mode: Three exclusive light shows
 PWM audio output for accurate pitch.
 Manual mode supports beat quantization（120 BPM）.
 Automatic mode includes original track rhythm reproduction.
+
 ----
 
 Bill of Materials
@@ -64,24 +65,21 @@ Bill of Materials
      - Button Cap
      - x9
    * - 6
-     - RGB
+     - RGB Light Strip
      - x1 
    * - 7
      - Screw package
      - x1 
    * - 8
-     - Screw package
-     - x1 
-   * - 9
      - Phillips screwdriver
      - x1 
-   * - 10
+   * - 9
      - Type-C data cable
      - x1
-   * - 11
+   * - 10
      - Basswood Board
      - x7
-   * - 12
+   * - 11
      - Jumper Wire
      - Several
 

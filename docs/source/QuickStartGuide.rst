@@ -19,8 +19,8 @@ Quick Start Guide
 - Button2 —— ESP32 IO18
 - Button3 —— ESP32 IO19
 - Button4 —— ESP32 IO23
-- Button5 —— ESP32 IO32
-- Button6 —— ESP32 IO33
+- Button5 —— ESP32 IO32（A4）
+- Button6 —— ESP32 IO33（A5）
 - Button7 —— ESP32 IO12
 - Button8 —— ESP32 IO4
 - Speaker: Red line —— ESP32 IO13，Black line —— ESP32 GND
